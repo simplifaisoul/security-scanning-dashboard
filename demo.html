@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Tools Web Application</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #00ff88;
+            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        
+        .feature-description {
+            color: #aaaaaa;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            color: #000000;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #00cc66, #00aa55);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #00ff88;
+            color: #00ff88;
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(0, 255, 136, 0.1);
+        }
+        
+        .demo-section {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .demo-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .tool-badge {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-badge:hover {
+            border-color: #00ff88;
+            transform: scale(1.05);
+        }
+        
+        .tool-name {
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-type {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666666;
+        }
+        
+        .github-link {
+            color: #00ff88;
+            text-decoration: none;
+        }
+        
+        .github-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🛡️</div>
+        <h1 class="title">Security Tools Web Application</h1>
+        <p class="subtitle">
+            A comprehensive cybersecurity platform with modern UI for network scanning, vulnerability assessment, and security analysis tools.
+        </p>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3 class="feature-title">Network Scanning</h3>
+                <p class="feature-description">
+                    Advanced network discovery and port scanning with Nmap integration for comprehensive security assessment.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3 class="feature-title">Web Vulnerability</h3>
+                <p class="feature-description">
+                    Automated web application security testing with Nikto and SQLMap for vulnerability detection.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Real-time Results</h3>
+                <p class="feature-description">
+                    Live scan progress tracking and instant results with WebSocket-powered real-time updates.
+                </p>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">🚀 Available Security Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-badge">
+                    <div class="tool-name">Nmap</div>
+                    <div class="tool-type">Network Scanner</div>
+                </div>
+                <div class="tool-badge">
+                    <div class="tool-name">Nikto</div>
+                    <div class="tool-type">Web Scanner</div>
+                </div>
+                <div class="tool-badge">
+                    <div class="tool-name">SQLMap</div>
+                    <div class="tool-type">SQL Injection</div>
+                </div>
+                <div class="tool-badge">
+                    <div class="tool-name">WPScan</div>
+                    <div class="tool-type">WordPress</div>
+                </div>
+                <div class="tool-badge">
+                    <div class="tool-name">DIRB</div>
+                    <div class="tool-type">Directory Brute</div>
+                </div>
+                <div class="tool-badge">
+                    <div class="tool-name">SearchSploit</div>
+                    <div class="tool-type">Exploit DB</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 3rem;">
+            <a href="https://github.com/simplifaisoul/security-tools-webapp" class="cta-button" target="_blank">
+                📦 View Source Code
+            </a>
+            <a href="https://github.com/simplifaisoul/security-tools-webapp#-quick-start" class="cta-button secondary" target="_blank">
+                📖 Setup Instructions
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>
+                Built with ❤️ for the cybersecurity community | 
+                <a href="https://github.com/simplifaisoul/security-tools-webapp" class="github-link" target="_blank">
+                    GitHub Repository
+                </a>
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                ⚠️ For educational and authorized security testing purposes only
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card, .tool-badge');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-4px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Add typing effect to title
+            const title = document.querySelector('.title');
+            const text = title.textContent;
+            title.textContent = '';
+            let index = 0;
+            
+            function typeWriter() {
+                if (index < text.length) {
+                    title.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html>

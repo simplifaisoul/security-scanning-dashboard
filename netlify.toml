@@ -9,30 +9,30 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://your-backend-api.com/api/:splat"
+  to = "https://security-tools-temp-backend.onrender.com/api/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/ws/*"
-  to = "https://your-backend-api.com/ws/:splat"
+  to = "wss://security-tools-temp-backend.onrender.com/ws/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from "/*"
+  from = "/*"
   to = "/index.html"
   status = 200
 
 [context.production]
   [context.production.environment]
-    VITE_API_BASE_URL = "https://your-backend-api.com/api/v1"
-    VITE_WS_URL = "wss://your-backend-api.com/ws"
+    VITE_API_BASE_URL = "https://security-tools-temp-backend.onrender.com/api/v1"
+    VITE_WS_URL = "wss://security-tools-temp-backend.onrender.com/ws"
 
 [context.deploy-preview]
   [context.deploy-preview.environment]
-    VITE_API_BASE_URL = "https://your-backend-api.com/api/v1"
-    VITE_WS_URL = "wss://your-backend-api.com/ws"
+    VITE_API_BASE_URL = "https://security-tools-temp-backend.onrender.com/api/v1"
+    VITE_WS_URL = "wss://security-tools-temp-backend.onrender.com/ws"
 
 [[headers]]
   for = "/*"

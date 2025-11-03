@@ -1,0 +1,52 @@
+[build]
+  base = "frontend/"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_VERSION = "10"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-backend-api.com/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ws/*"
+  to = "https://your-backend-api.com/ws/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  [context.production.environment]
+    VITE_API_BASE_URL = "https://your-backend-api.com/api/v1"
+    VITE_WS_URL = "wss://your-backend-api.com/ws"
+
+[context.deploy-preview]
+  [context.deploy-preview.environment]
+    VITE_API_BASE_URL = "https://your-backend-api.com/api/v1"
+    VITE_WS_URL = "wss://your-backend-api.com/ws"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[functions]
+  directory = "netlify/functions"

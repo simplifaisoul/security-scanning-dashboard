@@ -1,0 +1,6 @@
+# API Routes
+/api/*  https://your-backend-api.com/api/:splat  200
+/ws/*   https://your-backend-api.com/ws/:splat   200
+
+# Fallback for SPA
+/*    /index.html   200

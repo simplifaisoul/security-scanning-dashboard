@@ -3,7 +3,7 @@ import toast from 'react-hot-toast'
 
 // Create axios instance
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1',
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/api/v1',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ api.interceptors.response.use(
 
 // WebSocket connection for real-time updates
 export const createWebSocketConnection = () => {
-  const wsUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:8000/ws'
+  const wsUrl = import.meta.env.VITE_WS_URL || `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws`
   const ws = new WebSocket(wsUrl)
   
   ws.onopen = () => {

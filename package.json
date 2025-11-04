@@ -1,0 +1,12 @@
+{
+  "name": "security-tools-webapp",
+  "version": "1.0.0",
+  "description": "Security Tools Web Application",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "postbuild": "cp -r frontend/dist ."
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
